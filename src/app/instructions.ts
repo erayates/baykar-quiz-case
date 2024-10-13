@@ -46,10 +46,7 @@ export function instructions(element: HTMLButtonElement, app: HTMLDivElement) {
     app.appendChild(instructionsElement);
 
     const closeButton = document.querySelector("#close-instructions");
-    if (closeButton) {
-      console.log("test");
-      closeButton.addEventListener("click", hideInstructions);
-    }
+    if (closeButton) closeButton.addEventListener("click", hideInstructions);
   }
 
   element.addEventListener("click", showInstructions);

@@ -19,8 +19,6 @@ async function _prepareQuestions() {
 export async function quiz(app: HTMLDivElement) {
   questions = await _prepareQuestions();
   questionIndex = 0;
-
-  console.log(questions);
   _currentQuestion = questions[questionIndex];
   _userAnswers = new Array(questions.length).fill("");
   _prepareQuizCard(app);
@@ -59,7 +57,6 @@ async function _prepareQuizCard(app: HTMLDivElement) {
       </div>`;
 
   app.innerHTML = questionCard;
-
 
   const infoText = document.querySelector("#info")!;
 
@@ -125,9 +122,9 @@ function _nextQuestion(app: HTMLDivElement) {
   if (questionIndex < questions.length) {
     _currentQuestion = questions[questionIndex];
     _prepareQuizCard(app);
-  } else {
-    _showResults(app);
+    return;
   }
+  _showResults(app);
 }
 
 function _showResults(app: HTMLDivElement) {
